@@ -1,0 +1,4 @@
+﻿cl : línea de comandos warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+  main.cpp
+C:\Users\usuario\Desktop\Git computación cientifica\Semana 4 - Clases C++\main.cpp(64,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+  TemplateProject.vcxproj -> C:\Users\usuario\Desktop\Git computación cientifica\Semana 4 - Clases C++\Debug\TemplateProject.exe
