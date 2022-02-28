@@ -12,6 +12,7 @@
 
 #define shoulder 45
 #define elbow 45
+#define aditional 90
 #define numCola 20
 
 //-----------------------------------------------------------------------------
@@ -57,6 +58,14 @@ public:
                      glutSolidCube(1.0);
                  glPopMatrix();
              }
+         glPopMatrix();
+
+         // Objeto adicional
+         glPushMatrix();
+             glTranslatef(-1.0, 5.0, 1.0);
+             glRotatef((GLfloat)aditional, 0.6, 0.0, 0.9);
+             glScalef(15.0, 0.4, 1.0);
+             glutSolidCube(1.0);
          glPopMatrix();
 
       if (shader) shader->end();
