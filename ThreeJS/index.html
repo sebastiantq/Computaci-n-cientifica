@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta charset="utf-8">
+    <title>Mundo computación gráfica en WebGL</title>
+    <style>
+      html, body { margin: 0; padding: 0; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <script src="https://threejs.org/build/three.js"></script>
+  	<script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script>
+      var textura_mundo = new THREE.TextureLoader().load("texturas/propias/mundo.jpg");
+
+      var normal_map_piramide = new THREE.TextureLoader().load("texturas/propias/normal_map_piramide.png");
+  		var textura_piramide = new THREE.TextureLoader().load("texturas/propias/piramide.jpg");
+
+  		var light = new THREE.AmbientLight(0xffffff, 1);
+
+  		light.position.set(0, 20, 0);
+
+  		var scene = new THREE.Scene();
+      var aspect = window.innerWidth / window.innerHeight;
+      var camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
+      var renderer = new THREE.WebGLRenderer();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+  		scene.add(light);
+
+      camera.position.z = 5;
+
+  		controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+  		var loader = new THREE.ObjectLoader();
+
+      // Abrir mundo
+  		loader.load("mallas/propias/fixed_mundo.json", function(group) {
+  		  mundo = group.children[0];
+  			mundo.material = new THREE.MeshPhongMaterial({map: textura_mundo});
+  			scene.add(mundo);
+  		});
+
+      // Abrir piramide
+      loader.load("mallas/propias/piramide.json", function(group) {
+  		  piramide = group.children[0];
+  			piramide.material = new THREE.MeshPhongMaterial({/*map: textura_piramide,*/ normalMap: normal_map_piramide});
+  			scene.add(piramide);
+  		});
+
+      var render = function (){
+        requestAnimationFrame(render);
+        // mundo.rotation.y += 0.01;
+        // piramide.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      };
+
+      render();
+    </script>
+  </body>
+</html>
