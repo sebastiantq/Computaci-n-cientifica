@@ -46,7 +46,7 @@
       // Abrir piramide
       loader.load("mallas/propias/piramide.json", function(group) {
   		  piramide = group.children[0];
-  			piramide.material = new THREE.MeshPhongMaterial({/*map: textura_piramide,*/ normalMap: normal_map_piramide});
+  			piramide.material = new THREE.MeshPhongMaterial({map: textura_piramide, normalMap: normal_map_piramide});
   			scene.add(piramide);
   		});
 
